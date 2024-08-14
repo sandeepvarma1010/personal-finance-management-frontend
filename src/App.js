@@ -27,7 +27,7 @@ function App() {
     return (
         <Router>
             <div className="App">
-                <Header onLogout={handleLogout} />
+                <Header />
                 <Routes>
                     <Route path="/" element={<Login onLogin={handleLogin} />} />
                     <Route path="/register" element={<Register />} />

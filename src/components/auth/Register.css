@@ -61,3 +61,10 @@ header {
 .back-button:hover {
     background: #333;
 }
+.button-container {
+    display: flex;
+    gap: 10px; /* Adds space between the buttons */
+    justify-content: center; /* Centers the buttons */
+    margin-top: 20px; /* Adds space above the buttons */
+}
+

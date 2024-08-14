@@ -40,7 +40,7 @@ export const requestPasswordReset = async (email) => {
         return response.data;
     } catch (error) {
         console.error('Error sending password reset request:', error);
-        throw error.response.data.msg || 'Error sending password reset request.';
+        throw error.response?.data?.msg || 'Error sending password reset request.';
     }
 };
 
@@ -50,6 +50,6 @@ export const resetPassword = async (token, newPassword) => {
         return response.data;
     } catch (error) {
         console.error('Error resetting password:', error);
-        throw error.response.data.msg || 'Error resetting password.';
+        throw error.response?.data?.msg || 'Error resetting password.';
     }
 };

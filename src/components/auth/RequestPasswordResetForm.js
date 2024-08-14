@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { requestPasswordReset } from '../../services/api';
 import { useNavigate } from 'react-router-dom';
 
 const RequestPasswordResetForm = () => {
@@ -11,16 +11,12 @@ const RequestPasswordResetForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/forgot-password', { email });
-            setMessage(response.data.msg);
+            const response = await requestPasswordReset(email);
+            setMessage(response.msg);
             setError('');
-
-            // Assuming you want to redirect to the reset-password page after the email is sent
-            const token = response.data.token; // Assuming your backend returns the token
-            navigate(`/reset-password/${token}`);
+            navigate(`/reset-password/${response.token}`);
         } catch (err) {
-            console.error('Error sending password reset request:', err.response || err.message);
-            setError(err.response?.data?.msg || 'Error sending password reset request.');
+            setError(err);
             setMessage('');
         }
     };
@@ -31,12 +27,15 @@ const RequestPasswordResetForm = () => {
             <form onSubmit={handleSubmit}>
                 <input
                     type="email"
+                    placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
                     required
                 />
-                <button type="submit">Send Reset Link</button>
+                <div className="button-container">
+                    <button onClick={() => navigate('/')}>Back to Login</button>
+                    <button type="submit">Send Reset Link</button>
+                </div>
             </form>
             {message && <p>{message}</p>}
             {error && <p style={{ color: 'red' }}>{error}</p>}
