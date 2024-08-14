@@ -1,0 +1,149 @@
+/* TransactionForm.css */
+
+/* Container for the amount input and the currency symbol */
+.amount-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Space between this and the next field */
+}
+
+/* Styling for the currency symbol */
+.currency-symbol {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-right: none; /* Remove the right border to merge with input */
+    border-radius: 4px 0 0 4px;
+    color: #333;
+}
+
+/* Styling for the amount input field */
+.amount-container input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid #ccc;
+    border-left: none; /* Remove left border to merge with symbol */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* General styling for the form inputs and select dropdown */
+.transaction-form input, .transaction-form select {
+    margin-bottom: 15px; /* Space between inputs and dropdown */
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Specific styling for the select dropdown */
+.transaction-form select {
+    appearance: none;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+/* Styling for the Add Transaction button */
+.add-transaction-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px; /* Space between the form fields and button */
+}
+
+.add-transaction-button:hover {
+    background-color: #111;
+}
+
+/* Styling for the Back to Dashboard button */
+.dashboard-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Space between Add Transaction and Back to Dashboard buttons */
+}
+
+.dashboard-button:hover {
+    background-color: #45a049;
+}
+/* Success message styling */
+.success-message {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    text-align: center;
+}
+/* TransactionList.css */
+
+/* Styling for the transaction list */
+.transaction-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.transaction-list li {
+    margin-bottom: 10px;
+    display: flex;  /* Use flexbox for alignment */
+    justify-content: space-between;  /* Space between text and button */
+    align-items: center;  /* Vertically center the content */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Styling for the delete button */
+.delete-button {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
+}
+/* Add this CSS to your existing stylesheet */
+
+.input-group {
+    display: flex;
+    align-items: center;  /* Vertically center the items */
+}
+
+.input-group-prepend {
+    background-color: #f1f1f1;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.amount-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+}
