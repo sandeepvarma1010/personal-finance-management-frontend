@@ -67,3 +67,10 @@
 .logout-button:hover {
     background-color: #c0392b;
 }
+
+.transaction-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
