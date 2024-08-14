@@ -28,8 +28,28 @@ export const deleteTransaction = async (id, token) => {
     });
 };
 
-export const updateTransaction = async (id, transactionData, token) => {
-    return await axios.put(`${API_URL}/transactions/${id}`, transactionData, {
+export const updateTransaction = async (id, updatedTransaction, token) => {
+    return await axios.put(`${API_URL}/transactions/${id}`, updatedTransaction, {
         headers: { Authorization: `Bearer ${token}` },
     });
+};
+
+export const requestPasswordReset = async (email) => {
+    try {
+        const response = await axios.post(`${API_URL}/forgot-password`, { email });
+        return response.data;
+    } catch (error) {
+        console.error('Error sending password reset request:', error);
+        throw error.response.data.msg || 'Error sending password reset request.';
+    }
+};
+
+export const resetPassword = async (token, newPassword) => {
+    try {
+        const response = await axios.post(`${API_URL}/reset-password/${token}`, { password: newPassword });
+        return response.data;
+    } catch (error) {
+        console.error('Error resetting password:', error);
+        throw error.response.data.msg || 'Error resetting password.';
+    }
 };

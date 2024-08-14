@@ -7,7 +7,6 @@ const TransactionListPage = ({ token }) => {
 
     return (
         <div>
-            <h2>Your Transactions</h2>
             <TransactionList token={token} />
             <button onClick={() => navigate('/transactions')} className="dashboard-button">
                 Back to Dashboard

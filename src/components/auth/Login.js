@@ -5,42 +5,47 @@ import { loginUser } from '../../services/api';
 const Login = ({ onLogin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate(); // Initialize the useNavigate hook
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const loginData = { email, password };
         try {
-            const response = await loginUser(loginData);
-            const token = response.data.token;
-            onLogin(token); // Pass the token to the parent component
-            navigate('/transactions'); // Navigate to the transactions page after login
-        } catch (error) {
-            console.error('Login failed:', error.response ? error.response.data : error.message);
-            alert('Login failed');
+            const response = await loginUser({ email, password });
+            onLogin(response.data.token);
+            navigate('/transactions');
+        } catch (err) {
+            setError('Invalid credentials');
         }
     };
 
     return (
         <div>
-            <form onSubmit={handleLogin}>
-                <h2>Login</h2>
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
                 <input
                     type="email"
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                 />
                 <input
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
                 <button type="submit">Login</button>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
             </form>
             <p>
-                Don't have an account? <Link to="/register">Register here</Link>
+                Don't have an account?{' '}
+                <Link to="/register">Register Here</Link>
+            </p>
+            <p>
+                <Link to="/forgot-password">Forgot Password?</Link>
             </p>
         </div>
     );
