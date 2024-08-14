@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/layout/Header';
 import Register from './components/auth/Register';
@@ -11,8 +11,22 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 function App() {
     const [token, setToken] = useState('');
 
+    // Check if token exists in localStorage on initial load
+    useEffect(() => {
+        const savedToken = localStorage.getItem('token');
+        if (savedToken) {
+            setToken(savedToken);
+        }
+    }, []);
+
     const handleLogin = (newToken) => {
         setToken(newToken);
+        localStorage.setItem('token', newToken); // Save token to localStorage
+    };
+
+    const handleLogout = () => {
+        setToken('');
+        localStorage.removeItem('token'); // Remove token from localStorage
     };
 
     return (
@@ -24,7 +38,7 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     {token ? (
                         <>
-                            <Route path="/transactions" element={<TransactionPage />} />
+                            <Route path="/transactions" element={<TransactionPage onLogout={handleLogout} />} />
                             <Route path="/add-transaction" element={<AddTransaction token={token} />} />
                             <Route path="/transaction-list" element={<TransactionListPage token={token} />} />
                         </>

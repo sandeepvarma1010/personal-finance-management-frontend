@@ -1,0 +1,52 @@
+/* TransactionPage.css */
+
+.transaction-page {
+    position: relative;
+    padding: 20px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logout-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #c0392b;
+}
+
+.button-container {
+    margin-top: 30px;
+}
+
+.dashboard-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.dashboard-button:hover {
+    background-color: #1f8a50;
+}
+
+.success-message {
+    margin-top: 20px;
+    color: green;
+    font-weight: bold;
+}
